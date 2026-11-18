@@ -1,0 +1,54 @@
+:root {
+  --paper-dark: #191510;
+  --paper-raised: #221c15;
+  --paper-sunken: #120f0b;
+  --paper-edge: #3a3126;
+  --paper-edge-strong: #574a38;
+  --ink-warm: #efe7d8;
+  --ink-muted: #a89b86;
+  --ink-faint: #6f6455;
+  --age-yellow: #c9a961;
+  --age-yellow-dim: #8a7442;
+  --seal-red: #8c2b20;
+  --done-green: #5c6f5e;
+
+  --font-display: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Cascadia Mono", monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+
+  --dur-quick: 200ms;
+  --dur-base: 300ms;
+  --dur-flip: 400ms;
+  --dur-letter: 600ms;
+  --ease-out: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-stamp: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --z-sheet: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+
+  --topbar-h: 52px;
+  --actionbar-h: 76px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-quick: 1ms;
+    --dur-base: 1ms;
+    --dur-flip: 1ms;
+    --dur-letter: 1ms;
+  }
+}

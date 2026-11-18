@@ -1,0 +1,15 @@
+{
+  "name": "zero-submission",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "零号提交 · 互动选角系统（骨架）",
+  "scripts": {
+    "start": "node server/index.js",
+    "lan": "node scripts/lan-check.mjs",
+    "selfcheck": "node scripts/selfcheck.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

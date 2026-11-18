@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#191510" />
+    <title>零号提交 · GM 控制台</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body class="admin-page">
+    <section class="gate" id="gate">
+      <form class="gate__form" id="gate-form" autocomplete="off">
+        <p class="eyebrow">GM 控制台</p>
+        <h1 class="gate__title serif">零号提交</h1>
+        <label class="sr-only" for="passcode">控制台口令</label>
+        <input class="gate__input mono" id="passcode" name="passcode" type="password" placeholder="控制台口令" />
+        <button class="btn btn--primary" type="submit">进入</button>
+        <p class="gate__error faint" id="gate-error" role="alert"></p>
+      </form>
+    </section>
+
+    <main class="console" id="console" hidden>
+      <header class="console__head">
+        <div>
+          <p class="eyebrow">GM 控制台</p>
+          <h1 class="console__title serif">零号提交</h1>
+        </div>
+        <div class="console__status">
+          <span class="chip" id="window-flag">开放</span>
+          <span class="mono" id="progress">已归组 0／40</span>
+          <button class="btn btn--ghost" id="export-btn">导出记录</button>
+          <button class="btn btn--ghost" id="logout-btn">退出</button>
+        </div>
+      </header>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">窗口控制</h2>
+          <p class="panel__hint faint">锁定后学生端所有写入口失效，仅控制台可改。</p>
+        </header>
+        <div class="segmented" id="window-actions"></div>
+        <p class="panel__hint faint" id="window-hint"></p>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">活动阶段</h2>
+          <p class="panel__hint faint">切换后学生端与大屏自动跟随；票数只在揭晓后公布。</p>
+        </header>
+        <div class="segmented" id="phase-actions"></div>
+        <p class="panel__hint faint" id="phase-hint"></p>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">分布表</h2>
+          <div class="panel__tools">
+            <span class="chip" id="reconcile-flag">计数一致</span>
+            <button class="btn btn--ghost" id="repair-btn">立即重算</button>
+            <button class="btn btn--ghost" id="autofill-btn" data-armed="false">一键补齐六组</button>
+            <button class="btn btn--ghost" id="rebalance-btn" data-armed="false">一键调剂</button>
+          </div>
+        </header>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>组</th>
+              <th>角色</th>
+              <th>已选</th>
+              <th>剩余</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="distribution"></tbody>
+        </table>
+        <p class="panel__hint faint">少于 5 人的组标黄，仅为提醒，不是运营失误。</p>
+        <p class="panel__hint faint" id="autofill-hint"></p>
+        <p class="panel__hint faint" id="rebalance-hint"></p>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">投票计数</h2>
+          <span class="chip mono" id="vote-status">未开始</span>
+        </header>
+        <div class="votecounts" id="votecounts"></div>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">线索与环节</h2>
+          <span class="chip mono" id="clue-status">未发放</span>
+        </header>
+        <div class="segmented" id="clue-actions">
+          <button class="btn btn--ghost" data-round="1" type="button">发第 1 轮 L1—L5</button>
+          <button class="btn btn--ghost" data-round="2" type="button">发第 2 轮 L6—L7</button>
+          <button class="btn btn--ghost" data-round="3" type="button">发第 3 轮 L8—L9</button>
+          <button class="btn btn--ghost" id="force-l8" type="button">重新投影 L8</button>
+        </div>
+        <p class="panel__hint faint" id="clue-hint"></p>
+        <p class="panel__hint faint clue-warning" id="clue-warning" hidden></p>
+
+        <div class="stagegrid">
+          <div class="stagegrid__cell">
+            <p class="eyebrow">第一轮陈述</p>
+            <p class="mono" id="statement-now">第 0 组</p>
+            <button class="btn btn--ghost" id="statement-next" type="button">下一组</button>
+          </div>
+          <div class="stagegrid__cell">
+            <p class="eyebrow">发言人</p>
+            <select class="select" id="spokesman-group"></select>
+            <select class="select" id="spokesman-student"></select>
+            <button class="btn btn--ghost" id="spokesman-save" type="button">录入</button>
+          </div>
+          <div class="stagegrid__cell">
+            <p class="eyebrow">质询记录</p>
+            <select class="select" id="interrogate-from"></select>
+            <select class="select" id="interrogate-to"></select>
+            <select class="select" id="interrogate-answer">
+              <option value="yes">是</option>
+              <option value="no">不是</option>
+              <option value="decline">我不回答</option>
+            </select>
+            <button class="btn btn--ghost" id="interrogate-save" type="button">记录一次</button>
+          </div>
+          <div class="stagegrid__cell">
+            <p class="eyebrow">静默</p>
+            <select class="select" id="silence-group"></select>
+            <input class="select" id="silence-reason" placeholder="原因（仅控制台可见）" maxlength="40" />
+            <button class="btn btn--ghost" id="silence-apply" type="button">判定静默</button>
+            <ul class="silencelist" id="silence-list"></ul>
+          </div>
+        </div>
+
+        <p class="eyebrow">文字质询队列</p>
+        <ul class="questionlist" id="question-queue"></ul>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">手动调剂</h2>
+        </header>
+        <form class="moveform" id="move-form">
+          <label class="sr-only" for="move-student">学生</label>
+          <select class="select mono" id="move-student" name="studentId" required></select>
+          <label class="sr-only" for="move-target">目标组</label>
+          <select class="select" id="move-target" name="toRoleId" required></select>
+          <button class="btn btn--primary" type="submit">调剂</button>
+        </form>
+        <p class="panel__hint faint" id="move-hint">调剂会记入操作记录，不占用学生改选次数。</p>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">未选名单</h2>
+          <span class="chip mono" id="unselected-count">0 人</span>
+        </header>
+        <ul class="people" id="unselected"></ul>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title serif">操作记录</h2>
+        </header>
+        <ul class="log" id="audit"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="/js/admin.js"></script>
+  </body>
+</html>

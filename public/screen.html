@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#120f0b" />
+    <title>零号提交 · 现场战况</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/screen.css" />
+  </head>
+  <body class="board-page">
+    <main class="board">
+      <header class="board__head">
+        <p class="eyebrow" id="phase-label">零号提交 · 现场战况</p>
+        <div class="board__totals">
+          <span class="board__joined mono" id="status-line">已归组 0／40</span>
+          <span class="board__window chip" id="window-flag">开放</span>
+        </div>
+      </header>
+
+      <section class="board__view" id="view-casting">
+        <ol class="board__groups" id="groups" aria-live="polite"></ol>
+      </section>
+
+      <section class="board__view board__view--statement" id="view-statement" hidden>
+        <p class="vote__big serif">第一轮陈述</p>
+        <p class="vote__count mono" id="statement-group">第 1 组</p>
+        <p class="view__timer mono" id="statement-timer">60</p>
+      </section>
+
+      <section class="board__view board__view--interrogate" id="view-interrogate" hidden>
+        <p class="vote__big serif">第一轮质询</p>
+        <p class="vote__count mono" id="interrogate-target">等待主持人点名</p>
+        <p class="view__timer mono" id="interrogate-timer">30</p>
+      </section>
+
+      <section class="board__view board__view--confront" id="view-confront" hidden>
+        <p class="reveal__big serif">对质 · 线索公示</p>
+        <div class="clueboard" id="clueboard"></div>
+      </section>
+
+      <section class="board__view" id="view-vote" hidden>
+        <p class="vote__big serif" id="vote-title">第一轮投票</p>
+        <p class="vote__count mono" id="vote-count">已投 0／40</p>
+        <p class="vote__note faint">投票期间不公布分布，以免影响判断。</p>
+      </section>
+
+      <section class="board__view board__view--reveal" id="view-reveal" hidden>
+        <p class="reveal__big serif" id="reveal-title">真相揭晓</p>
+        <div class="reveal__cols">
+          <div class="reveal__col">
+            <p class="eyebrow">指认票</p>
+            <ul class="votebars" id="reveal-accuse"></ul>
+          </div>
+          <div class="reveal__col">
+            <p class="eyebrow">定性票</p>
+            <ul class="votebars" id="reveal-qualify"></ul>
+          </div>
+        </div>
+        <p class="reveal__answer" id="reveal-answer"></p>
+      </section>
+
+      <section class="board__view board__view--ending" id="view-ending" hidden>
+        <p class="eyebrow">处置结果 · 结局</p>
+        <p class="ending__big serif" id="ending-name"></p>
+        <p class="ending__text" id="ending-text"></p>
+        <p class="ending__line" id="ending-line"></p>
+      </section>
+
+      <footer class="board__ticker">
+        <span class="board__ticker-label mono">已归组</span>
+        <div class="board__ticker-mask">
+          <span class="board__ticker-track" id="ticker">等待第一位同学归组</span>
+        </div>
+      </footer>
+    </main>
+
+    <div class="board__stale" id="stale" hidden>数据可能延迟，正在重新同步</div>
+
+    <script type="module" src="/js/screen.js"></script>
+  </body>
+</html>

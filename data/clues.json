@@ -1,0 +1,99 @@
+{
+  "rounds": [
+    { "round": 1, "label": "第一轮", "clueIds": ["L1", "L2", "L3", "L4", "L5"] },
+    { "round": 2, "label": "第二轮", "clueIds": ["L6", "L7"] },
+    { "round": 3, "label": "第三轮", "clueIds": ["L8", "L9"] }
+  ],
+  "clues": [
+    {
+      "id": "L1",
+      "name": "举报信",
+      "content": "三句话，无署名，11/12 09:00 送达学院邮箱。",
+      "proves": "有人知情，且选择了匿名。",
+      "visibility": "public",
+      "round": 1,
+      "holderRoleId": null,
+      "forced": false
+    },
+    {
+      "id": "L2",
+      "name": "申报书第 17 页",
+      "content": "「注册用户 1200 人，日活 340 人，用户满意度 96%」。",
+      "proves": "数据规模与实际严重不符。",
+      "visibility": "public",
+      "round": 1,
+      "holderRoleId": null,
+      "forced": false
+    },
+    {
+      "id": "L3",
+      "name": "后台数据截图",
+      "content": "11/09 导出：注册 87 人，日活 12 人。",
+      "proves": "1200 是编的，且编造发生在提交前。",
+      "visibility": "public",
+      "round": 1,
+      "holderRoleId": null,
+      "forced": false
+    },
+    {
+      "id": "L4",
+      "name": "提交记录与承诺书",
+      "content": "11/09 23:47 提交，提交人 linchen，附《数据真实性承诺书》。",
+      "proves": "队长签字确认过数据真实。",
+      "visibility": "public",
+      "round": 1,
+      "holderRoleId": null,
+      "forced": false
+    },
+    {
+      "id": "L5",
+      "name": "获奖公示",
+      "content": "校一等奖，推荐省赛，指导教师签字。",
+      "proves": "有问题的材料通过了全部审核。",
+      "visibility": "public",
+      "round": 1,
+      "holderRoleId": null,
+      "forced": false
+    },
+    {
+      "id": "L6",
+      "name": "聊天记录",
+      "content": "9/20 周予：「顾哥，你那个推荐算法我能用吗？」顾承：「我们组的，随便用，别提我名字就行」。",
+      "proves": "代码来源是顾承，且存在「别提名字」的暗示。",
+      "visibility": "held",
+      "round": 2,
+      "holderRoleId": "zhouyu",
+      "forced": false
+    },
+    {
+      "id": "L7",
+      "name": "Word 修订记录",
+      "content": "11/08 22:10，苏晚将「87」改为「1200」，修订模式全程未关。",
+      "proves": "页面是她改的，但操作痕迹完整保留。",
+      "visibility": "held",
+      "round": 2,
+      "holderRoleId": "suwan",
+      "forced": false
+    },
+    {
+      "id": "L8",
+      "name": "Git 删除记录",
+      "content": "9/22 02:31，林澈删除一行注释：「参考：顾承 2024 年参赛项目」。",
+      "proves": "唯一一次主动掩盖行为。",
+      "visibility": "held",
+      "round": 3,
+      "holderRoleId": "linche",
+      "forced": true
+    },
+    {
+      "id": "L9",
+      "name": "工作日志与草稿",
+      "content": "11/05 日志：「星火数据存疑，已口头提醒队长，未上报」；举报信三版，第三版删去「我知道是谁」。",
+      "proves": "沈知白是举报人，且曾试图私下解决。",
+      "visibility": "held",
+      "round": 3,
+      "holderRoleId": "shenzhibai",
+      "forced": false
+    }
+  ]
+}

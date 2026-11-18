@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#191510" />
+    <title>零号提交 · 选角</title>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/student.css" />
+  </head>
+  <body class="student">
+    <div class="student__shell" id="app" data-stage="identity">
+      <header class="topbar">
+        <span class="topbar__brand serif">零号提交</span>
+        <span class="topbar__meta">
+          <span class="chip" id="window-flag">开放</span>
+          <span class="topbar__progress mono" id="progress">已归组 --／40</span>
+        </span>
+      </header>
+
+      <main class="stage" id="stage" aria-live="polite">
+        <section class="loading">
+          <p class="eyebrow">正在调取档案</p>
+          <p class="muted">请稍候</p>
+        </section>
+      </main>
+
+      <footer class="actionbar" id="actionbar" hidden></footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+
+    <script type="module" src="/js/student.js"></script>
+  </body>
+</html>
